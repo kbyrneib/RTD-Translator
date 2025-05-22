@@ -1,5 +1,3 @@
-# Python program to convert a given contract identifier to an Excel RTD formula
-
 ## Usage
 
 - Install TWS API (version 10.32.01 for best results) in a fresh environment (and activate)
