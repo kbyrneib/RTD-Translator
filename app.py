@@ -1,8 +1,6 @@
-import time
 from ibapi.client import *
 from ibapi.wrapper import *
 from rtd import RTD
-import sys
 
 class RTDApp(EClient, EWrapper):
     def __init__(self):
