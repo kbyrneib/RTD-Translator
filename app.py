@@ -32,9 +32,9 @@ class RTDApp(EClient, EWrapper):
 
         # Build RTD formula - there is no validation on topic string carried out
         if topic.strip() == "":
-            RTD(contractDetails.contract, topic="Last", connection="paper")
+            RTD(contractDetails.contract, topic="Last")
         else:
-            RTD(contractDetails.contract, topic=topic, connection="paper")
+            RTD(contractDetails.contract, topic=topic)
 
         # Trigger asking for another contract ID
         self.start()
