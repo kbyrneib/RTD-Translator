@@ -27,10 +27,19 @@ class RTDApp(EClient, EWrapper):
         self.reqContractDetails(self.nextId(), contract)
 
     def contractDetails(self, reqId, contractDetails):
-        RTD(contractDetails.contract, topic="Close", connection="paper")
+        # Get topic string off the user
+        topic = input("Enter topic (blank for Last): ")
+
+        # Build RTD formula - there is no validation on topic string carried out
+        if topic.strip() == "":
+            RTD(contractDetails.contract, topic="Last", connection="paper")
+        else:
+            RTD(contractDetails.contract, topic=topic, connection="paper")
+
+        # Trigger asking for another contract ID
         self.start()
 
-    def error(self, reqId, errorCode, errorString, advancedOrderRejectJson=""):
+    def error(self, reqId, errorTime, errorCode, errorString, advancedOrderRejectJson=""):
         # Dictionary of relevant error strings
         error_codes = {200 : "\nNo security definition found - enter a valid contract ID.\n", 
                        320 : "\nUnable to parse the provided contract ID.\n", 
