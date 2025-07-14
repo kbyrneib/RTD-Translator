@@ -22,6 +22,11 @@ class TickerBuilder:
     requirements.update(dict.fromkeys(["FUT"], requirements["STK"] + ["multiplier", "lastTradeDateOrContractMonth"]))
     requirements.update(dict.fromkeys(["OPT", "FOP", "WAR"], requirements["FUT"] + ["strike", "right"]))
 
+    # Combos/Spreads
+    # sym, exch, cur, sec + "cmb=<conid1>#<ratio1>#<action1>#<exchange1>;<conid2>#<ratio2>#<action2>#<exchange2>;"
+    # The spread contract’s symbol can be either the symbol of one of the contract legs or, for two-legged combinations the symbols of both legs separated by a comma
+    # Todo: add combo/spread functionality
+
     def __init__(self, contract):
         self.security_type = contract.secType
         self.contract = contract
